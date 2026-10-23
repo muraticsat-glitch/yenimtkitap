@@ -1,6 +1,6 @@
 workflows:
-  android-debug:
-    name: mtkitap Debug APK
+  android-release:
+    name: mtkitap Android APK
     max_build_duration: 60
     instance_type: mac_mini_m2
 
@@ -17,11 +17,15 @@ workflows:
         script: |
           echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
 
-      - name: Build APK
+      - name: Embed Expo JavaScript bundle
+        script: |
+          CI=1 npx expo export:embed --platform android --dev false
+
+      - name: Build release APK
         script: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleDebug
+          ./gradlew clean assembleRelease
 
     artifacts:
-      - android/app/build/outputs/apk/debug/app-debug.apk
+      - android/app/build/outputs/apk/release/app-release.apk
