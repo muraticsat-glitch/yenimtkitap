@@ -76,28 +76,23 @@ const config: ExpoConfig = {
       }
   },
   android: {
-  adaptiveIcon: {
-  backgroundColor: "#E6F4FE",
-  foregroundImage: "./assets/images/android-icon-foreground.png",
-  backgroundImage: "./assets/images/android-icon-background.png",
-  },
-    predictiveBackGestureEnabled: false,
-    package: env.androidPackage,
-    permissions: ["POST_NOTIFICATIONS"],
-    intentFilters: [
-      {
-        action: "VIEW",
-        autoVerify: true,
-        data: [
-          {
-            scheme: env.scheme,
-            host: "*",
-          },
-        ],
-        category: ["BROWSABLE", "DEFAULT"],
-      },
-    ],
-  },
+  predictiveBackGestureEnabled: false,
+  package: env.androidPackage,
+  permissions: ["POST_NOTIFICATIONS"],
+  intentFilters: [
+    {
+      action: "VIEW",
+      autoVerify: true,
+      data: [
+        {
+          scheme: env.scheme,
+          host: "*",
+        },
+      ],
+      category: ["BROWSABLE", "DEFAULT"],
+    },
+  ],
+},
   web: {
     bundler: "metro",
     output: "static",
