@@ -11,7 +11,7 @@ workflows:
 
       - name: Generate Android project
         script: |
-          npx expo prebuild --platform android --non-interactive
+          CI=1 npx expo prebuild --platform android
 
       - name: Set Android SDK location
         script: |
